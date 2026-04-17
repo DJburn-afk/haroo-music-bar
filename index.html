@@ -9,25 +9,15 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    background: #f5f4f0;
-    color: #1a1a18;
-    min-height: 100vh;
+    background: #f5f4f0; color: #1a1a18; min-height: 100vh;
   }
   .header {
-    background: #1a1a18;
-    color: #f5f4f0;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: #1a1a18; color: #f5f4f0;
+    padding: 16px 20px; display: flex; align-items: center; justify-content: space-between;
   }
   .header-title { font-size: 18px; font-weight: 500; letter-spacing: .02em; }
   .header-sub { font-size: 12px; color: #888780; margin-top: 2px; }
-  .np-bar {
-    background: #1a1a18;
-    border-top: 0.5px solid #2e2e2c;
-    padding: 12px 20px 16px;
-  }
+  .np-bar { background: #1a1a18; border-top: 0.5px solid #2e2e2c; padding: 12px 20px 16px; }
   .np-label {
     font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
     color: #E24B4A; display: flex; align-items: center; gap: 5px; margin-bottom: 6px;
@@ -39,12 +29,10 @@
   .np-empty { font-size: 14px; color: #555; }
   .chat-wrap {
     max-width: 640px; margin: 0 auto;
-    display: flex; flex-direction: column;
-    height: calc(100vh - 148px);
+    display: flex; flex-direction: column; height: calc(100vh - 148px);
   }
   .msgs {
-    flex: 1; overflow-y: auto;
-    padding: 16px 16px 8px;
+    flex: 1; overflow-y: auto; padding: 16px 16px 8px;
     display: flex; flex-direction: column; gap: 10px;
   }
   .msg { display: flex; gap: 8px; align-items: flex-end; }
@@ -72,10 +60,8 @@
     color: #aaa; font-size: 14px; text-align: center; padding: 2rem; gap: 10px;
   }
   .input-area {
-    background: #fff;
-    border-top: 0.5px solid #e5e3dc;
-    padding: 10px 14px;
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    background: #fff; border-top: 0.5px solid #e5e3dc;
+    padding: 10px 14px; padding-bottom: max(10px, env(safe-area-inset-bottom));
   }
   .name-row { display: flex; gap: 8px; margin-bottom: 8px; }
   .name-row input, .name-row select {
@@ -100,6 +86,7 @@
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .send-btn:active { opacity: .7; }
+
   .dj-panel {
     display: none; background: #111110;
     padding: 14px 16px; max-width: 640px; margin: 0 auto;
@@ -123,12 +110,15 @@
   .dj-btn:hover { background: #222; }
   .dj-btn.red { border-color: #E24B4A; color: #E24B4A; }
   .dj-btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
   .dj-toggle {
     position: fixed; bottom: 80px; right: 16px;
     width: 46px; height: 46px; border-radius: 50%;
     background: #1a1a18; border: 0.5px solid #444;
     cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100;
   }
+  .dj-toggle:active { opacity: .7; }
+
   .conn-badge {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 11px; color: #888; padding: 3px 10px;
@@ -136,6 +126,7 @@
   }
   .conn-dot { width: 6px; height: 6px; border-radius: 50%; background: #555; }
   .conn-dot.on { background: #1D9E75; }
+
   .toast {
     position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%);
     background: #1a1a18; color: #f5f4f0;
@@ -143,6 +134,7 @@
     z-index: 200; opacity: 0; transition: opacity .3s; pointer-events: none; white-space: nowrap;
   }
   .toast.show { opacity: 1; }
+
   .loading {
     position: fixed; inset: 0; background: #1a1a18;
     display: flex; flex-direction: column;
@@ -153,6 +145,39 @@
   .loading-sub { font-size: 13px; color: #666; }
   .spinner { width: 28px; height: 28px; border: 2px solid #333; border-top-color: #E24B4A; border-radius: 50%; animation: spin .8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* 비밀번호 모달 */
+  .pw-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6); z-index: 400;
+    align-items: center; justify-content: center;
+  }
+  .pw-overlay.show { display: flex; }
+  .pw-modal {
+    background: #1a1a18; border: 0.5px solid #333;
+    border-radius: 16px; padding: 28px 24px; width: 280px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .pw-title { font-size: 14px; font-weight: 500; color: #f5f4f0; text-align: center; }
+  .pw-sub { font-size: 12px; color: #666; text-align: center; margin-top: -8px; }
+  .pw-input {
+    padding: 10px 14px; font-size: 15px; letter-spacing: .2em;
+    border: 0.5px solid #333; border-radius: 10px;
+    background: #222; color: #f5f4f0; font-family: inherit;
+    text-align: center; width: 100%;
+  }
+  .pw-input:focus { outline: none; border-color: #666; }
+  .pw-btn {
+    padding: 10px; font-size: 14px;
+    background: #f5f4f0; color: #1a1a18;
+    border: none; border-radius: 10px; cursor: pointer; font-family: inherit; font-weight: 500;
+  }
+  .pw-btn:active { opacity: .8; }
+  .pw-cancel {
+    font-size: 13px; color: #555; text-align: center; cursor: pointer;
+  }
+  .pw-cancel:hover { color: #888; }
+  .pw-error { font-size: 12px; color: #E24B4A; text-align: center; min-height: 16px; }
 </style>
 </head>
 <body>
@@ -161,6 +186,19 @@
   <div class="spinner"></div>
   <div class="loading-title">하루뮤직바</div>
   <div class="loading-sub">Hongdae · 연결 중...</div>
+</div>
+
+<!-- DJ 비밀번호 모달 -->
+<div class="pw-overlay" id="pw-overlay">
+  <div class="pw-modal">
+    <div class="pw-title">DJ 전용</div>
+    <div class="pw-sub">비밀번호를 입력해주세요</div>
+    <input class="pw-input" id="pw-input" type="password" placeholder="••••"
+      maxlength="20" onkeydown="onPwKey(event)" />
+    <div class="pw-error" id="pw-error"></div>
+    <button class="pw-btn" onclick="checkPw()">확인</button>
+    <div class="pw-cancel" onclick="closePw()">취소</div>
+  </div>
 </div>
 
 <div class="header">
@@ -219,11 +257,11 @@
   </div>
   <div class="dj-btn-row">
     <button class="dj-btn red" onclick="clearChat()">채팅 초기화</button>
-    <button class="dj-btn" onclick="toggleDJ()">닫기</button>
+    <button class="dj-btn" onclick="lockDJ()">잠금</button>
   </div>
 </div>
 
-<button class="dj-toggle" onclick="toggleDJ()">
+<button class="dj-toggle" onclick="tryOpenDJ()" title="DJ">
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
     <circle cx="10" cy="10" r="8" stroke="#f5f4f0" stroke-width="1.2"/>
     <circle cx="10" cy="10" r="3" fill="#f5f4f0"/>
@@ -253,13 +291,63 @@ const db = getDatabase(app);
 const msgsRef = ref(db, 'vibe/messages');
 const npRef   = ref(db, 'vibe/nowplaying');
 
+// ★ DJ 비밀번호 — 원하시는 걸로 바꿔주세요
+const DJ_PASSWORD = "haroo6649";
+
+var djUnlocked = false;
+
 function ts() {
   return new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
 }
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._to);
+  t._to = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
 
+/* 비밀번호 모달 */
+window.tryOpenDJ = function() {
+  if (djUnlocked) {
+    document.getElementById('dj-panel').classList.toggle('open');
+    return;
+  }
+  document.getElementById('pw-input').value = '';
+  document.getElementById('pw-error').textContent = '';
+  document.getElementById('pw-overlay').classList.add('show');
+  setTimeout(function(){ document.getElementById('pw-input').focus(); }, 100);
+};
+window.closePw = function() {
+  document.getElementById('pw-overlay').classList.remove('show');
+};
+window.onPwKey = function(e) {
+  if (e.key === 'Enter') { e.preventDefault(); window.checkPw(); }
+  if (e.key === 'Escape') { window.closePw(); }
+};
+window.checkPw = function() {
+  var val = document.getElementById('pw-input').value;
+  if (val === DJ_PASSWORD) {
+    djUnlocked = true;
+    document.getElementById('pw-overlay').classList.remove('show');
+    document.getElementById('dj-panel').classList.add('open');
+    showToast('DJ 모드 활성화');
+  } else {
+    document.getElementById('pw-error').textContent = '비밀번호가 틀렸어요';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+};
+window.lockDJ = function() {
+  djUnlocked = false;
+  document.getElementById('dj-panel').classList.remove('open');
+  showToast('DJ 모드 잠금');
+};
+
+/* 일반 기능 */
 window.autoResize = function(el) {
   el.style.height = 'auto';
   el.style.height = Math.min(el.scrollHeight, 100) + 'px';
@@ -279,17 +367,6 @@ window.onWho = function() {
     mi.placeholder = '이 곡의 vibe는...';
   }
 };
-window.toggleDJ = function() {
-  document.getElementById('dj-panel').classList.toggle('open');
-};
-
-function showToast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._to);
-  t._to = setTimeout(function(){ t.classList.remove('show'); }, 2200);
-}
 
 window.setNP = async function() {
   var title  = document.getElementById('dj-title').value.trim();
@@ -357,11 +434,7 @@ function renderMsgs(msgs) {
 }
 
 var firstLoad = true;
-
-onValue(npRef, function(snap) {
-  renderNP(snap.val());
-});
-
+onValue(npRef, function(snap) { renderNP(snap.val()); });
 onValue(msgsRef, function(snap) {
   renderMsgs(snap.val());
   if (firstLoad) {
@@ -371,7 +444,6 @@ onValue(msgsRef, function(snap) {
     document.getElementById('conn-txt').textContent = '연결됨';
   }
 });
-
 setTimeout(function(){
   if (firstLoad) {
     document.getElementById('loading').style.display = 'none';
